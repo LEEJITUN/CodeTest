@@ -1,0 +1,23 @@
+import java.util.Arrays;
+
+class Solution {
+    public long solution(long n) {
+            
+        char numList[] =  Long.toString(n).toCharArray();
+        char temp[] = new char[numList.length];
+        String str = "";
+        
+        for(int i = 0; i < numList.length; i++){
+            temp[i] = numList[i];
+            for(int j = i+1; j < numList.length; j++){
+                if(temp[i] < numList[j]){
+                    temp[i] = numList[j];
+                    numList[j] = numList[i];
+                    numList[i] = temp[i];
+                }
+            }
+        }
+            
+        return Long.parseLong(String.valueOf(temp));
+    }
+}
