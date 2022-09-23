@@ -1,0 +1,11 @@
+class Solution {
+    public String solution(String phone_number) {
+        char chList [] = phone_number.toCharArray();
+        int len = chList.length;
+            
+        for(int i = 0; i < len-4; i++){
+            chList[i] = '*';
+        }
+        return String.valueOf(chList);
+    }
+}
