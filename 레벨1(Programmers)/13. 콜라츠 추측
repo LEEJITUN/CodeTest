@@ -1,0 +1,31 @@
+class Solution {
+    public int solution(int num) {
+        int answer = 0;
+        
+        long cnt = 0; 
+        long temp = num;
+        
+        while(temp != 1){
+
+            if(temp % 2 == 0){ // 짝수
+                temp = temp / 2;
+                cnt++;
+            }else{ // 홀수
+                temp = (temp * 3) + 1;
+                cnt++;
+            }          
+            
+            if(cnt == 500){
+               answer = -1; 
+               break;
+            } else if(temp == 1){
+               answer = (int)cnt; 
+               break;
+            }
+            
+        }
+            
+            
+        return answer;
+    }
+}
