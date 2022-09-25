@@ -1,0 +1,21 @@
+class Solution {
+    public String solution(String s) {
+        char chList [] = s.toCharArray();
+        int len = chList.length;
+        char temp;
+        
+        for(int i = 0; i < len; i++){
+            temp = chList[i];
+            for(int j = i+1; j < len; j++){
+                if(chList[j] >= temp){
+                    temp = chList[j];
+                    chList[j] = chList[i];
+                    chList[i] = temp;
+                }
+            }
+        }
+        
+
+        return String.valueOf(chList);
+    }
+}
