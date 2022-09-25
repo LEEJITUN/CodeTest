@@ -1,0 +1,21 @@
+class Solution {
+    public boolean solution(String s) {
+        boolean answer = true;
+        char chList[] = s.toCharArray();
+        int len = s.length();
+        
+        if(len == 4 || len == 6){
+            for(char c : chList){
+                c -= '0';
+                if((int)c > 0 && (int)c > 10){
+                    answer = false;
+                    break;
+                }
+            }
+        }else{
+            answer = false;
+        }
+        
+        return answer;
+    }
+}
