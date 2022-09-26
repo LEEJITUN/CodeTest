@@ -1,0 +1,25 @@
+class Solution {
+    public String solution(String s, int n) {
+        String answer = "";
+        int len = s.length();
+        
+        for(int i = 0; i < len; i++){
+            char ch = s.charAt(i);
+            if(ch == ' '){
+                answer += ch;
+            }else{
+                int sum = ch + n;
+                
+                if( 'a' <= ch  && ch <= 'z'){
+                    
+                    answer += (char) (sum > 'z' ? sum-26 : sum);
+                    
+                }else{
+                     answer += (char) (sum > 'Z' ? sum-26 : sum);
+                }          
+            }
+        }
+        
+        return answer;
+    }
+}
