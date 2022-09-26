@@ -1,0 +1,18 @@
+import java.util.*;
+
+class Solution {
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+
+            int len = arr1.length;
+            String[] list = new String[len];
+            String format = "%" + n + "s";
+        
+            for(int i = 0; i < len; i++){      
+                list[i] = String.format(format,Integer.toBinaryString(arr1[i] | arr2[i]));
+                list[i] = list[i].replace("1","#").replace("0"," ");
+            }
+        
+        return list;
+    }
+}
+
