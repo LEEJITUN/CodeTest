@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Solution {
+    public String[] solution(String[] strings, int n) {
+        ArrayList<String> arr = new ArrayList<String>();
+        String[] answer = {};
+        int len = strings.length;
+        
+        for(int i = 0; i < len; i++){
+            arr.add("" + strings[i].charAt(n) + strings[i]);
+        }
+        
+        Collections.sort(arr);
+        answer = new String[len];
+        for(int i = 0; i < len; i++){
+            answer[i] = arr.get(i).substring(1,arr.get(i).length());
+        }
+        
+        return answer;
+    }
+}
