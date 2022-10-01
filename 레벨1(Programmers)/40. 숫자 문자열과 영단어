@@ -1,0 +1,73 @@
+class Solution {
+    public int solution(String s) {
+
+        String str = "";
+        String intStr = "";
+        
+        for(int i = 0; i < s.length(); i++){
+
+            if(s.charAt(i) - '0' > 0 && s.charAt(i) - '0' < 10 ){
+                intStr += s.charAt(i)-'0';
+            }else if(s.charAt(i) - '0' == 0){
+                intStr += String.format("0",intStr);
+            }else{
+                str += s.charAt(i);
+            }
+
+            switch(str){
+                case "zero": 
+                    intStr += String.format("0",intStr);
+                    str = "";
+                    break;
+                case "one": 
+                    intStr += "1";
+                    str = "";
+                    break;
+                case "two": 
+                    intStr += "2";
+                    str = "";
+                    break;
+                case "three": 
+                    intStr += "3";
+                    str = "";
+                    break;
+                case "four": 
+                    intStr += "4";
+                    str = "";
+                    break;
+                case "five": 
+                    intStr += "5";
+                    str = "";
+                    break;
+                case "six": 
+                    intStr += "6";
+                    str = "";
+                    break;
+                case "seven": 
+                    intStr += "7";
+                     str = "";
+                    break;
+                case "eight": 
+                    intStr += "8";
+                    str = "";
+                    break;
+                case "nine": 
+                    intStr += "9";
+                    str = "";
+                    break;
+            }     
+        }
+        
+        System.out.println(intStr);
+        return Integer.parseInt(intStr);
+    }
+}
+
+
+////////////////////////////////////////////////////
+
+String[] strArr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        for(int i = 0; i < strArr.length; i++) {
+            s = s.replaceAll(strArr[i], Integer.toString(i));
+        }
+        return Integer.parseInt(s);
