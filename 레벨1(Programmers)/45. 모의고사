@@ -1,0 +1,52 @@
+import java.util.*;
+class Solution {
+    int[] SU1 = {1 ,2 ,3 ,4 ,5};
+    int[] SU2 = {2, 1, 2, 3, 2, 4, 2, 5};
+    int[] SU3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+
+    int cnt [] = new int [3];
+    int list [] = new int [3];
+    int result_count = 0;
+
+    public int[] solution(int[] answers) {
+
+        cal(answers,SU1,0);
+        cal(answers,SU2,1);
+        cal(answers,SU3,2);
+
+        int maxNum = Math.max(list[0], Math.max(list[1],list[2]));
+
+        for(int i = 0; i < 3; i++){
+            if(maxNum == list[i]){
+                result_count++;
+            }
+        }
+
+        int result [] = new int[result_count];
+        result_count = 0;
+
+        for(int i = 0; i < 3; i++){
+            if(maxNum == list[i]){
+                result[result_count++] = i+1;
+            }
+        }
+
+        return result;
+    }
+
+
+    public void cal(int [] answers,int [] sub, int num){
+
+        for(int i = 0; i < answers.length; i++){
+
+            if(answers[i] == sub[cnt[num]++]){
+                list[num]++;
+            }
+
+            if(cnt[num] == sub.length){
+                cnt[num] = 0;
+            }
+
+        }
+    }
+}
