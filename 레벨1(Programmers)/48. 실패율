@@ -1,0 +1,64 @@
+import java.util.*;
+class Solution {
+    public int[] solution(int N, int[] stages) {
+        
+        int len = stages.length;
+        float people = len;
+        int[] answer = new int[N];
+        float rateArr[][] = new float[N][2];
+      
+        // 실패율 구하기
+        for(int i = 0; i < N; i++){
+            float cnt = 0;
+            for(int j = 0; j < len; j++){
+                if( stages[j] != 0 && stages[j] <= i+1){
+                    cnt++;
+                    stages[j] = 0;
+                }
+            }
+            
+            rateArr[i][0] = cnt/people;
+            rateArr[i][1] = i+1;
+            people -= cnt; 
+         
+        }
+        
+        // sort
+        for(int i = 0; i < N; i++){
+            for(int j = i+1; j < N; j++ ){
+                float raTemp = rateArr[i][0];
+                float stTemp = rateArr[i][1];
+                
+                if(raTemp < rateArr[j][0]){
+                    
+                    raTemp = rateArr[j][0];
+                    stTemp = rateArr[j][1];
+                    
+                    rateArr[j][0] = rateArr[i][0];
+                    rateArr[i][0] = raTemp;
+                    
+                    rateArr[j][1] = rateArr[i][1];
+                    rateArr[i][1] = stTemp;
+                }
+                
+                if(raTemp == rateArr[j][0] && stTemp > rateArr[j][1]){
+                    raTemp = rateArr[j][0];
+                    stTemp = rateArr[j][1];
+                    
+                    rateArr[j][0] = rateArr[i][0];
+                    rateArr[i][0] = raTemp;
+                    
+                    rateArr[j][1] = rateArr[i][1];
+                    rateArr[i][1] = stTemp;
+                }
+            }
+            
+        }
+        
+        for(int i = 0; i < N; i++){
+            answer[i] = (int)rateArr[i][1];
+        }
+    
+        return answer;
+    }
+}
