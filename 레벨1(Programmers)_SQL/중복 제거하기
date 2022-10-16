@@ -1,0 +1,11 @@
+SELECT 
+    COUNT(GROUP_TB.NAME) AS count
+FROM 
+    (SELECT
+        NAME
+     FROM
+        ANIMAL_INS 
+     WHERE
+        NAME IS NOT NULL
+     GROUP BY NAME) GROUP_TB
+    
