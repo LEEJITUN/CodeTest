@@ -1,0 +1,50 @@
+import java.util.*;
+
+class Solution {
+    String answer = "";
+    
+    public String solution(String s) {
+       
+        s = s.toLowerCase();
+        char chList[] = s.toCharArray();
+        chList[0] = Character.toUpperCase(chList[0]);
+        
+        for(int i = 0; i < chList.length-1; i++){
+           if(chList[i] == ' '){
+                i++;
+               if(chList[i] == ' '){
+                   i--;
+               }else{
+                   chList[i] = Character.toUpperCase(chList[i]);
+               }
+                
+            }
+        }
+        
+        return String.valueOf(chList);
+    }
+    
+}
+
+
+import java.util.*;
+
+class Solution {
+
+    
+    public String solution(String s) {
+        String answer = "";
+        boolean flag = true;
+        String [] arr = s.toLowerCase().split("");
+       
+        
+        for(int i = 0; i < arr.length; i++){
+            answer += flag ? arr[i].toUpperCase() : arr[i];
+            flag = arr[i].equals(" ") ? true : false;
+        }
+        
+        
+        return answer;
+    }
+    
+}
