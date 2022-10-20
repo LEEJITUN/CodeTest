@@ -1,0 +1,21 @@
+import java.util.*;
+class Solution {
+    int[] answer = new int[2];
+    public int[] solution(String s) {   
+        int len = s.length();
+        
+        while(len != 1){
+            s = s.replace("0","");
+            int temp = s.length();
+           
+            answer[0]++;
+            answer[1] += len - temp;
+
+            s = Integer.toBinaryString(temp);
+            len = s.length();
+        }
+        
+        return answer;
+    }
+
+}
