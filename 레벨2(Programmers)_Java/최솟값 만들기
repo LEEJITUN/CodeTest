@@ -1,0 +1,21 @@
+import java.util.*;
+class Solution{
+    public int solution(int []A, int []B){
+        int answer = 0;
+        int len = B.length;
+        Arrays.sort(A);
+        
+        List<Integer> list = new ArrayList<Integer>();
+        for(int i = 0; i < len; i++){
+            list.add(B[i]);
+        }
+        
+        Collections.sort(list, Collections.reverseOrder());
+        
+        for(int i = 0; i < len; i++){
+            answer += A[i] * list.get(i);
+        }
+              
+        return answer;
+    }
+}
