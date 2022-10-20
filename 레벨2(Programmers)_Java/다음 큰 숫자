@@ -1,0 +1,13 @@
+import java.util.*;
+class Solution {
+    public int solution(int n) {
+        int len2 = Integer.toBinaryString(n).replace("0","").length();
+        int tempLen = 0;
+            
+        while(len2 != tempLen){
+            tempLen = Integer.toBinaryString(++n).replace("0","").length();
+        }
+        
+        return n;
+    }
+}
