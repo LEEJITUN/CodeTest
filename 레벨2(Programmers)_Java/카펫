@@ -1,0 +1,19 @@
+class Solution {
+    public int[] solution(int brown, int yellow) {
+        int[] answer = new int[2];
+        int sum = brown + yellow;
+        
+        for(int i = 1; i <= sum; i++){
+            int col = sum/i;
+            
+            if(i > col) continue;
+            
+            if((col - 2) * (i - 2) == yellow){
+                answer[0] = col;
+                answer[1] = i;
+                return answer;
+            }
+        }
+        return answer;
+    }
+}
