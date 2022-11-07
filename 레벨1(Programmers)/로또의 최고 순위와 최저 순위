@@ -1,0 +1,59 @@
+import java.util.*;
+class Solution {
+    public int[] solution(int[] lottos, int[] win_nums) {
+        int[] answer = {};
+        int cnt = 0;
+        int zero = 0;
+        
+        Arrays.sort(lottos);
+        Arrays.sort(win_nums);
+        
+        for(int i = 0; i < 6; i++){
+            int num = lottos[i];
+            if(num == 0) zero++;
+            for(int j = 0; j < 6; j++){
+                if(num == win_nums[j]){
+                    cnt++;
+                    break;
+                }
+            }
+        }
+        
+        if(zero == 6) return new int[]{1,6};
+        zero = (cnt+zero) == 0 ? 6 : 7-(cnt+zero);
+        cnt = cnt == 0 ? 6 : 7-cnt;
+        
+        return new int[] {zero, cnt};
+    }
+}
+
+
+/////////////////////////////////////////////
+import java.util.*;
+class Solution {
+    public int[] solution(int[] lottos, int[] win_nums) {
+        int[] answer = new int[2];
+        HashSet<Integer>  hs = new HashSet<Integer>();
+        int zeroCnt = 0;
+        int colCnt = 0;
+        
+        for(int num : lottos){
+            if(num == 0) {
+                zeroCnt++;
+                continue;
+            }
+            hs.add(num);
+        }
+        
+        if(zeroCnt == 6) return new int[] {1,6};
+        
+        for(int num : win_nums){
+            if(hs.contains(num)) colCnt++;
+        }
+        
+        answer[0] = colCnt+zeroCnt == 0 ? 6 : 7-(colCnt+zeroCnt);
+        answer[1] = colCnt == 0 ? 6 : 7-colCnt;
+            
+        return answer;
+    }
+}
