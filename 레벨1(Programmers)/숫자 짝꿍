@@ -1,0 +1,24 @@
+class Solution {
+    public String solution(String X, String Y) {
+        StringBuilder answer = new StringBuilder();
+    
+        int arr[][] = new int[2][10];
+        
+        for(String str : X.split("")) arr[0][Integer.parseInt(str)]++;
+        for(String str : Y.split("")) arr[1][Integer.parseInt(str)]++;
+        
+        for(int i = 9; i > -1; i--){
+            for(int j = 0; j < Math.min(arr[0][i],arr[1][i]); j++){
+                answer.append(i);
+            }
+        }
+        
+        String str = answer.toString();
+        
+        if(str.equals("")) return "-1";
+        if(str.charAt(0) == '0') return "0";
+        
+        
+        return str;
+    }
+}
